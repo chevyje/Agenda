@@ -1,0 +1,11 @@
+Agenda.accdb
+*.vsidx
+/Agenda/.vs
+/Agenda/Agenda/.vs
+/Agenda/Agenda/bin
+Agenda/Agenda/LocalAppSettings/Settings.json
+/Agenda/packages
+*.accdb
+*.xlsx
+/Agenda/Agenda/obj
+/Agenda/Agenda/Properties
