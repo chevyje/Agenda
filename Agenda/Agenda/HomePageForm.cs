@@ -31,6 +31,7 @@ namespace Agenda
         public static List<Customer> Klanten = new List<Customer>();
         public static List<GiftCard> Bonnen = new List<GiftCard>();
         public static List<Appointment> Afspraken = new List<Appointment>();
+        public static List<WaitList> WachtLijst = new List<WaitList>();
 
         // Alle Usercontrol pagina's die maar 1x gebruikt hoeven te worden
         public static UC_Agenda agenda = new UC_Agenda();
@@ -62,6 +63,7 @@ namespace Agenda
             Afspraken = await AppointmentQuery.GetAppointments();
             Klanten = await CustomerQuery.GetCustomers();
             Bonnen = await GiftCardQuery.GetGiftCards();
+            WachtLijst = await WaitListQuery.GetWaitList();
 
             // Laad alle pagina's 1x
             agenda.LoadInfo();

@@ -9,3 +9,4 @@ Agenda/Agenda/LocalAppSettings/Settings.json
 *.xlsx
 /Agenda/Agenda/obj
 /Agenda/Agenda/Properties
+*.laccdb

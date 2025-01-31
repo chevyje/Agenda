@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Agenda
 {
-    internal class Colors
+    public class Colors
     {
         public static Color backgroundColor = Color.FromArgb(1, 1, 1); 
     }

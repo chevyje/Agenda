@@ -12,6 +12,8 @@ using System.Windows.Forms;
 
 using Agenda.Classes.Objects;
 using Agenda.Forms.Agenda;
+using Agenda.UserControls.Agenda;
+using Agenda.Classes.Querys;
 
 namespace Agenda
 {
@@ -19,6 +21,7 @@ namespace Agenda
     {
         DateTime datum;
         List<Appointment> afspraakList = HomePageForm.Afspraken;
+        List<WaitList> waitList = HomePageForm.WachtLijst;
         List<Appointment> afspraken = new List<Appointment>();
         Appointment selectedAfspraak;
 
@@ -27,12 +30,15 @@ namespace Agenda
             InitializeComponent();
             datum = DateTime.Today;
             LoadInfo();
+            LoadWaitList();
         }
-        public void LoadInfo()
+        public async void LoadInfo()
         {
-            afspraakList = HomePageForm.Afspraken;
+            afspraakList = await AppointmentQuery.GetAppointments();
+            waitList = await WaitListQuery.GetWaitList();
             FilterAfspraakPerMonth();
             LoadDays();
+            LoadWaitList();
         }
 
         public void DetailedAfspraak(Appointment afspraak)
@@ -75,7 +81,7 @@ namespace Agenda
             }
         }
 
-        public void FilterAfspraakPerMonth()
+        private void FilterAfspraakPerMonth()
         {
             afspraken.Clear();
             foreach (Appointment afspr in afspraakList)
@@ -119,7 +125,7 @@ namespace Agenda
                 default: return null;
             }
         }
-        public void LoadDays()
+        private void LoadDays()
         {
             DagenContainer.Controls.Clear();
             int aantalDagen = 42;
@@ -203,6 +209,22 @@ namespace Agenda
             }
         }
 
+        private void LoadWaitList()
+        {
+            Debug.WriteLine("Test");
+            WachtlijstContainer.Controls.Clear();
+            if(waitList != null)
+            {
+                foreach (WaitList w in waitList)
+                {
+                    Debug.WriteLine($"Wachtlijst ID = {w.Id}");
+                    UC_WaitList waitList = new UC_WaitList();
+                    waitList.LoadInfo(w);
+                    WachtlijstContainer.Controls.Add(waitList);
+                }
+            }
+        }
+
         // Buttons 
         private void NextMonth_Click(object sender, EventArgs e)
         {
@@ -218,7 +240,7 @@ namespace Agenda
             LoadDays();
         }
 
-        public void lb_details_close_Click(object sender, EventArgs e)
+        private void lb_details_close_Click(object sender, EventArgs e)
         {
             afspraakDetails.Visible = false;
         }
@@ -246,7 +268,7 @@ namespace Agenda
         }
 
         // Nieuwe gemaakt afsrpaak toevoegen
-        public void AddNewAfspraak(List<Appointment> afspraak)
+        private void AddNewAfspraak(List<Appointment> afspraak)
         {
             afspraakList = afspraak;
             FilterAfspraakPerMonth();

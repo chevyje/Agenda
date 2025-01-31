@@ -113,6 +113,8 @@
   <ItemGroup>
     <Compile Include="Classes\Checks\AppointmentCheck.cs" />
     <Compile Include="Classes\Checks\CustomerCheck.cs" />
+    <Compile Include="Classes\Objects\WaitList.cs" />
+    <Compile Include="Classes\Querys\WaitListQuery.cs" />
     <Compile Include="Classes\Querys\GiftCardQuery.cs" />
     <Compile Include="Classes\Querys\CustomerQuery.cs" />
     <Compile Include="Classes\Querys\AppointmentQuery.cs" />
@@ -213,6 +215,12 @@
     <Compile Include="UserControls\Agenda\Afspraken\UC_DetailedAfspraak.Designer.cs">
       <DependentUpon>UC_DetailedAfspraak.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Agenda\UC_WaitList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Agenda\UC_WaitList.Designer.cs">
+      <DependentUpon>UC_WaitList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\KadoBonnen\UC_KadoBon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -294,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Agenda\Afspraken\UC_DetailedAfspraak.resx">
       <DependentUpon>UC_DetailedAfspraak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Agenda\UC_WaitList.resx">
+      <DependentUpon>UC_WaitList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\KadoBonnen\UC_KadoBon.resx">
       <DependentUpon>UC_KadoBon.cs</DependentUpon>

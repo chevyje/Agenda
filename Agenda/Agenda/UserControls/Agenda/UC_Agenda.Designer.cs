@@ -55,7 +55,7 @@
             this.lb_details1 = new System.Windows.Forms.Label();
             this.btn_Search = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btn_refresh = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.WachtlijstContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.afspraakDetails.SuspendLayout();
             this.SuspendLayout();
@@ -369,12 +369,12 @@
             this.btn_refresh.TabIndex = 19;
             this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
-            // flowLayoutPanel1
+            // WachtlijstContainer
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1236, 140);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(461, 860);
-            this.flowLayoutPanel1.TabIndex = 20;
+            this.WachtlijstContainer.Location = new System.Drawing.Point(1236, 140);
+            this.WachtlijstContainer.Name = "WachtlijstContainer";
+            this.WachtlijstContainer.Size = new System.Drawing.Size(460, 860);
+            this.WachtlijstContainer.TabIndex = 20;
             // 
             // label1
             // 
@@ -392,7 +392,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.WachtlijstContainer);
             this.Controls.Add(this.afspraakDetails);
             this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.btn_Search);
@@ -443,7 +443,7 @@
         private System.Windows.Forms.Label lb_details1;
         private Guna.UI2.WinForms.Guna2ImageButton btn_Search;
         private Guna.UI2.WinForms.Guna2ImageButton btn_refresh;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel WachtlijstContainer;
         private System.Windows.Forms.Label label1;
     }
 }
