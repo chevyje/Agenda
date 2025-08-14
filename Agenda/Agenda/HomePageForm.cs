@@ -43,7 +43,7 @@ namespace Agenda
         {
             InitializeComponent();
             LoadAll();
-            Settings.Default.dbPath = "C:\\Users\\jurre\\OneDrive\\Projecten\\Agenda\\Agenda.accdb";
+            Settings.Default.dbPath = "C:\\Users\\jurre\\OneDrive\\Projecten\\Agenda\\Database.accdb";
             Settings.Default.Save();
         }
 
@@ -61,9 +61,11 @@ namespace Agenda
             // Laad alle gegevens
             settings = await AccessSettings.LoadSettings();
             Afspraken = await AppointmentQuery.GetAppointments();
-            Klanten = await CustomerQuery.GetCustomers();
             Bonnen = await GiftCardQuery.GetGiftCards();
             WachtLijst = await WaitListQuery.GetWaitList();
+
+            // Get customers
+            GetCustomers.LoadCustomersFromEBoeking();
 
             // Laad alle pagina's 1x
             agenda.LoadInfo();

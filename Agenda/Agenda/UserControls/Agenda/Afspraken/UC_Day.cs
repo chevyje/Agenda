@@ -25,7 +25,7 @@ namespace Agenda
         {
             if (datum == DateTime.Today)
             {
-                this.BackColor = Color.FromArgb(166, 247, 252);
+                this.BackColor = Colors.currentDay;
             }
 
             lb_dag.Text = datum.ToString("dd");

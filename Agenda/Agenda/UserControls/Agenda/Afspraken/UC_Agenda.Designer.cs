@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Agenda));
             this.lb_Maand = new System.Windows.Forms.Label();
             this.lb_Jaar = new System.Windows.Forms.Label();
             this.DagenContainer = new System.Windows.Forms.FlowLayoutPanel();
@@ -40,24 +39,10 @@
             this.PreviousMonth = new Guna.UI2.WinForms.Guna2ImageButton();
             this.NextMonth = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btn_PlusAfspraak = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.afspraakDetails = new Guna.UI2.WinForms.Guna2Panel();
-            this.lb_details_close = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.btn_details_wijzigen = new Guna.UI2.WinForms.Guna2Button();
-            this.lb_details_tijd = new System.Windows.Forms.Label();
-            this.lb_details2 = new System.Windows.Forms.Label();
-            this.lb_details_beschrijving = new System.Windows.Forms.Label();
-            this.lb_details5 = new System.Windows.Forms.Label();
-            this.lb_details_behandeling = new System.Windows.Forms.Label();
-            this.lb_details4 = new System.Windows.Forms.Label();
-            this.lb_details_naam = new System.Windows.Forms.Label();
-            this.lb_details3 = new System.Windows.Forms.Label();
-            this.lb_details_datum = new System.Windows.Forms.Label();
-            this.lb_details1 = new System.Windows.Forms.Label();
             this.btn_Search = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btn_refresh = new Guna.UI2.WinForms.Guna2ImageButton();
             this.WachtlijstContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.afspraakDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // lb_Maand
@@ -186,159 +171,6 @@
             this.btn_PlusAfspraak.TabIndex = 16;
             this.btn_PlusAfspraak.Click += new System.EventHandler(this.btn_PlusAfspraak_Click);
             // 
-            // afspraakDetails
-            // 
-            this.afspraakDetails.BackColor = System.Drawing.Color.Transparent;
-            this.afspraakDetails.BorderColor = System.Drawing.Color.Black;
-            this.afspraakDetails.BorderThickness = 1;
-            this.afspraakDetails.Controls.Add(this.lb_details_close);
-            this.afspraakDetails.Controls.Add(this.btn_details_wijzigen);
-            this.afspraakDetails.Controls.Add(this.lb_details_tijd);
-            this.afspraakDetails.Controls.Add(this.lb_details2);
-            this.afspraakDetails.Controls.Add(this.lb_details_beschrijving);
-            this.afspraakDetails.Controls.Add(this.lb_details5);
-            this.afspraakDetails.Controls.Add(this.lb_details_behandeling);
-            this.afspraakDetails.Controls.Add(this.lb_details4);
-            this.afspraakDetails.Controls.Add(this.lb_details_naam);
-            this.afspraakDetails.Controls.Add(this.lb_details3);
-            this.afspraakDetails.Controls.Add(this.lb_details_datum);
-            this.afspraakDetails.Controls.Add(this.lb_details1);
-            this.afspraakDetails.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.afspraakDetails.Location = new System.Drawing.Point(420, 250);
-            this.afspraakDetails.Name = "afspraakDetails";
-            this.afspraakDetails.Size = new System.Drawing.Size(400, 600);
-            this.afspraakDetails.TabIndex = 17;
-            this.afspraakDetails.Visible = false;
-            // 
-            // lb_details_close
-            // 
-            this.lb_details_close.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.lb_details_close.HoverState.ImageSize = new System.Drawing.Size(19, 19);
-            this.lb_details_close.Image = ((System.Drawing.Image)(resources.GetObject("lb_details_close.Image")));
-            this.lb_details_close.ImageOffset = new System.Drawing.Point(0, 0);
-            this.lb_details_close.ImageRotate = 0F;
-            this.lb_details_close.ImageSize = new System.Drawing.Size(17, 17);
-            this.lb_details_close.Location = new System.Drawing.Point(374, 3);
-            this.lb_details_close.Name = "lb_details_close";
-            this.lb_details_close.PressedState.ImageSize = new System.Drawing.Size(19, 19);
-            this.lb_details_close.Size = new System.Drawing.Size(25, 25);
-            this.lb_details_close.TabIndex = 11;
-            this.lb_details_close.Click += new System.EventHandler(this.lb_details_close_Click);
-            // 
-            // btn_details_wijzigen
-            // 
-            this.btn_details_wijzigen.BorderRadius = 30;
-            this.btn_details_wijzigen.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_details_wijzigen.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_details_wijzigen.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_details_wijzigen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_details_wijzigen.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
-            this.btn_details_wijzigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_details_wijzigen.ForeColor = System.Drawing.Color.Black;
-            this.btn_details_wijzigen.Location = new System.Drawing.Point(100, 494);
-            this.btn_details_wijzigen.Name = "btn_details_wijzigen";
-            this.btn_details_wijzigen.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_details_wijzigen.Size = new System.Drawing.Size(200, 87);
-            this.btn_details_wijzigen.TabIndex = 10;
-            this.btn_details_wijzigen.Text = "Wijzigen";
-            this.btn_details_wijzigen.Click += new System.EventHandler(this.btn_details_wijzigen_Click);
-            // 
-            // lb_details_tijd
-            // 
-            this.lb_details_tijd.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details_tijd.Location = new System.Drawing.Point(230, 71);
-            this.lb_details_tijd.Name = "lb_details_tijd";
-            this.lb_details_tijd.Size = new System.Drawing.Size(149, 29);
-            this.lb_details_tijd.TabIndex = 9;
-            this.lb_details_tijd.Text = "09:00 - 10:00";
-            // 
-            // lb_details2
-            // 
-            this.lb_details2.AutoSize = true;
-            this.lb_details2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details2.Location = new System.Drawing.Point(220, 47);
-            this.lb_details2.Name = "lb_details2";
-            this.lb_details2.Size = new System.Drawing.Size(37, 20);
-            this.lb_details2.TabIndex = 8;
-            this.lb_details2.Text = "Tijd";
-            // 
-            // lb_details_beschrijving
-            // 
-            this.lb_details_beschrijving.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details_beschrijving.Location = new System.Drawing.Point(25, 302);
-            this.lb_details_beschrijving.Name = "lb_details_beschrijving";
-            this.lb_details_beschrijving.Size = new System.Drawing.Size(350, 177);
-            this.lb_details_beschrijving.TabIndex = 7;
-            this.lb_details_beschrijving.Text = "Factuur voor werk. Evt nog eruit halen als";
-            // 
-            // lb_details5
-            // 
-            this.lb_details5.AutoSize = true;
-            this.lb_details5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details5.Location = new System.Drawing.Point(15, 278);
-            this.lb_details5.Name = "lb_details5";
-            this.lb_details5.Size = new System.Drawing.Size(105, 20);
-            this.lb_details5.TabIndex = 6;
-            this.lb_details5.Text = "Beschrijving";
-            // 
-            // lb_details_behandeling
-            // 
-            this.lb_details_behandeling.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details_behandeling.Location = new System.Drawing.Point(25, 225);
-            this.lb_details_behandeling.Name = "lb_details_behandeling";
-            this.lb_details_behandeling.Size = new System.Drawing.Size(350, 29);
-            this.lb_details_behandeling.TabIndex = 5;
-            this.lb_details_behandeling.Text = "Therapie Massage";
-            // 
-            // lb_details4
-            // 
-            this.lb_details4.AutoSize = true;
-            this.lb_details4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details4.Location = new System.Drawing.Point(15, 201);
-            this.lb_details4.Name = "lb_details4";
-            this.lb_details4.Size = new System.Drawing.Size(109, 20);
-            this.lb_details4.TabIndex = 4;
-            this.lb_details4.Text = "Behandeling";
-            // 
-            // lb_details_naam
-            // 
-            this.lb_details_naam.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details_naam.Location = new System.Drawing.Point(25, 148);
-            this.lb_details_naam.Name = "lb_details_naam";
-            this.lb_details_naam.Size = new System.Drawing.Size(350, 29);
-            this.lb_details_naam.TabIndex = 3;
-            this.lb_details_naam.Text = "Regina Langedijk";
-            // 
-            // lb_details3
-            // 
-            this.lb_details3.AutoSize = true;
-            this.lb_details3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details3.Location = new System.Drawing.Point(15, 124);
-            this.lb_details3.Name = "lb_details3";
-            this.lb_details3.Size = new System.Drawing.Size(55, 20);
-            this.lb_details3.TabIndex = 2;
-            this.lb_details3.Text = "Naam";
-            this.lb_details3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lb_details_datum
-            // 
-            this.lb_details_datum.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details_datum.Location = new System.Drawing.Point(25, 71);
-            this.lb_details_datum.Name = "lb_details_datum";
-            this.lb_details_datum.Size = new System.Drawing.Size(133, 29);
-            this.lb_details_datum.TabIndex = 1;
-            this.lb_details_datum.Text = "08-05-2023";
-            // 
-            // lb_details1
-            // 
-            this.lb_details1.AutoSize = true;
-            this.lb_details1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_details1.Location = new System.Drawing.Point(15, 47);
-            this.lb_details1.Name = "lb_details1";
-            this.lb_details1.Size = new System.Drawing.Size(62, 20);
-            this.lb_details1.TabIndex = 0;
-            this.lb_details1.Text = "Datum";
-            // 
             // btn_Search
             // 
             this.btn_Search.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
@@ -393,7 +225,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.Controls.Add(this.label1);
             this.Controls.Add(this.WachtlijstContainer);
-            this.Controls.Add(this.afspraakDetails);
             this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.btn_PlusAfspraak);
@@ -410,8 +241,6 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_Agenda";
             this.Size = new System.Drawing.Size(1700, 1000);
-            this.afspraakDetails.ResumeLayout(false);
-            this.afspraakDetails.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -428,19 +257,6 @@
         private Guna.UI2.WinForms.Guna2ImageButton PreviousMonth;
         private Guna.UI2.WinForms.Guna2ImageButton NextMonth;
         private Guna.UI2.WinForms.Guna2ImageButton btn_PlusAfspraak;
-        private Guna.UI2.WinForms.Guna2Panel afspraakDetails;
-        private Guna.UI2.WinForms.Guna2ImageButton lb_details_close;
-        private Guna.UI2.WinForms.Guna2Button btn_details_wijzigen;
-        private System.Windows.Forms.Label lb_details_tijd;
-        private System.Windows.Forms.Label lb_details2;
-        private System.Windows.Forms.Label lb_details_beschrijving;
-        private System.Windows.Forms.Label lb_details5;
-        private System.Windows.Forms.Label lb_details_behandeling;
-        private System.Windows.Forms.Label lb_details4;
-        private System.Windows.Forms.Label lb_details_naam;
-        private System.Windows.Forms.Label lb_details3;
-        private System.Windows.Forms.Label lb_details_datum;
-        private System.Windows.Forms.Label lb_details1;
         private Guna.UI2.WinForms.Guna2ImageButton btn_Search;
         private Guna.UI2.WinForms.Guna2ImageButton btn_refresh;
         private System.Windows.Forms.FlowLayoutPanel WachtlijstContainer;

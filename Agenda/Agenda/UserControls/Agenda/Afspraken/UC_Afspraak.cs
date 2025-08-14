@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Agenda.Classes.Objects;
+using Agenda.Forms.Agenda;
 
 namespace Agenda.UserControls
 {
@@ -35,7 +36,9 @@ namespace Agenda.UserControls
 
         private void OnClick(object sender, EventArgs e)
         {
-            HomePageForm.agenda.DetailedAfspraak(afspraak);
+            DetailedAppointmentForm form = new DetailedAppointmentForm();
+            form.LoadInfo(afspraak);
+            form.ShowDialog();
         }
     }
 }

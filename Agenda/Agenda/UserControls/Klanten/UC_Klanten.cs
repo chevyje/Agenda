@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Agenda.Classes;
 using Agenda.Classes.Objects;
 using Agenda.Forms.Agenda;
 using Agenda.Forms.Klanten;
@@ -24,12 +24,14 @@ namespace Agenda
 
         public void LoadInfo() {
             KlantenContainer.Controls.Clear();
+            KlantenContainer.SuspendLayout();
             foreach (Customer k in HomePageForm.Klanten)
             {
                 UC_Klant klant = new UC_Klant();
                 KlantenContainer.Controls.Add(klant);
                 klant.loadInfo(k);
             }
+            KlantenContainer.ResumeLayout();
         }
 
         private void btn_addCustomer_Click(object sender, EventArgs e)

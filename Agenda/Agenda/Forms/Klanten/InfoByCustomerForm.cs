@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Agenda.Classes;
 using Agenda.Classes.Objects;
 using Agenda.Forms.Agenda;
 using Agenda.UserControls;

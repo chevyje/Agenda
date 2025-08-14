@@ -23,15 +23,10 @@ namespace Agenda.Forms.Agenda
         private async void FillCombobox()
         {
             LocalApplicationSettings appSettings = await AccessSettings.LoadSettings();
-            combox_name.Items.Clear();
             combox_time.Items.Clear();
             combox_type.Items.Clear();
             combox_length.Items.Clear();
-            foreach (Customer c in HomePageForm.Klanten)
-            {
-                combox_name.Items.Add(c.Naam);
-            }
-
+            FillComboBox.CustomersNames(combox_name);
             foreach (string s in appSettings.ChosableTime)
             {
                 combox_time.Items.Add(s);

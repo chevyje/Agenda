@@ -113,38 +113,55 @@
   <ItemGroup>
     <Compile Include="Classes\Checks\AppointmentCheck.cs" />
     <Compile Include="Classes\Checks\CustomerCheck.cs" />
+    <Compile Include="Classes\Checks\FillComboBox.cs" />
+    <Compile Include="Classes\Checks\InputChecks.cs" />
+    <Compile Include="Classes\Checks\LabelCheck.cs" />
+    <Compile Include="Classes\GetCustomers.cs" />
     <Compile Include="Classes\Objects\WaitList.cs" />
+    <Compile Include="Classes\Querys\ApiRequest.cs" />
+    <Compile Include="Classes\Querys\SessionApi.cs" />
     <Compile Include="Classes\Querys\WaitListQuery.cs" />
     <Compile Include="Classes\Querys\GiftCardQuery.cs" />
     <Compile Include="Classes\Querys\CustomerQuery.cs" />
     <Compile Include="Classes\Querys\AppointmentQuery.cs" />
     <Compile Include="Classes\Objects\Appointment.cs" />
     <Compile Include="Classes\Objects\GiftCard.cs" />
-    <Compile Include="Classes\Objects\Customer.cs" />
-    <Compile Include="Forms\AddHolidayForm.cs">
+    <Compile Include="Forms\Agenda\Waitlist\WaitlistForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddHolidayForm.Designer.cs">
+    <Compile Include="Forms\Agenda\Waitlist\WaitlistForm.Designer.cs">
+      <DependentUpon>WaitlistForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Holiday\AddHolidayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Holiday\AddHolidayForm.Designer.cs">
       <DependentUpon>AddHolidayForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddSettingsForm.cs">
+    <Compile Include="Forms\Settings\AddSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddSettingsForm.Designer.cs">
+    <Compile Include="Forms\Settings\AddSettingsForm.Designer.cs">
       <DependentUpon>AddSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Agenda\Appointments\DetailedAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Agenda\Appointments\DetailedAppointmentForm.Designer.cs">
+      <DependentUpon>DetailedAppointmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LocalAppSettings\ApplicationSettings.cs" />
     <Compile Include="LocalAppSettings\Colors.cs" />
-    <Compile Include="Forms\Agenda\ChangeAppointmentForm.cs">
+    <Compile Include="Forms\Agenda\Appointments\ChangeAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Agenda\ChangeAppointmentForm.Designer.cs">
+    <Compile Include="Forms\Agenda\Appointments\ChangeAppointmentForm.Designer.cs">
       <DependentUpon>ChangeAppointmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Agenda\AddAppointmentForm.cs">
+    <Compile Include="Forms\Agenda\Appointments\AddAppointmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Agenda\AddAppointmentForm.Designer.cs">
+    <Compile Include="Forms\Agenda\Appointments\AddAppointmentForm.Designer.cs">
       <DependentUpon>AddAppointmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Agenda\SearchForm.cs">
@@ -197,16 +214,16 @@
     <Compile Include="UserControls\Agenda\Afspraken\UC_Afspraak.Designer.cs">
       <DependentUpon>UC_Afspraak.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Agenda\UC_Agenda.cs">
+    <Compile Include="UserControls\Agenda\Afspraken\UC_Agenda.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Agenda\UC_Agenda.Designer.cs">
+    <Compile Include="UserControls\Agenda\Afspraken\UC_Agenda.Designer.cs">
       <DependentUpon>UC_Agenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Agenda\UC_Day.cs">
+    <Compile Include="UserControls\Agenda\Afspraken\UC_Day.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Agenda\UC_Day.Designer.cs">
+    <Compile Include="UserControls\Agenda\Afspraken\UC_Day.Designer.cs">
       <DependentUpon>UC_Day.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Agenda\Afspraken\UC_DetailedAfspraak.cs">
@@ -215,10 +232,16 @@
     <Compile Include="UserControls\Agenda\Afspraken\UC_DetailedAfspraak.Designer.cs">
       <DependentUpon>UC_DetailedAfspraak.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Agenda\UC_WaitList.cs">
+    <Compile Include="UserControls\Agenda\Waitlist\UC_AddWaitlist.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Agenda\UC_WaitList.Designer.cs">
+    <Compile Include="UserControls\Agenda\Waitlist\UC_AddWaitlist.Designer.cs">
+      <DependentUpon>UC_AddWaitlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Agenda\Waitlist\UC_WaitList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Agenda\Waitlist\UC_WaitList.Designer.cs">
       <DependentUpon>UC_WaitList.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\KadoBonnen\UC_KadoBon.cs">
@@ -251,17 +274,23 @@
     <Compile Include="UserControls\UC_Settings.Designer.cs">
       <DependentUpon>UC_Settings.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\AddHolidayForm.resx">
+    <EmbeddedResource Include="Forms\Agenda\Waitlist\WaitlistForm.resx">
+      <DependentUpon>WaitlistForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Holiday\AddHolidayForm.resx">
       <DependentUpon>AddHolidayForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddSettingsForm.resx">
+    <EmbeddedResource Include="Forms\Settings\AddSettingsForm.resx">
       <DependentUpon>AddSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Agenda\ChangeAppointmentForm.resx">
+    <EmbeddedResource Include="Forms\Agenda\Appointments\ChangeAppointmentForm.resx">
       <DependentUpon>ChangeAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Agenda\AddAppointmentForm.resx">
+    <EmbeddedResource Include="Forms\Agenda\Appointments\AddAppointmentForm.resx">
       <DependentUpon>AddAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Agenda\Appointments\DetailedAppointmentForm.resx">
+      <DependentUpon>DetailedAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Agenda\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
@@ -294,16 +323,19 @@
     <EmbeddedResource Include="UserControls\Agenda\Afspraken\UC_Afspraak.resx">
       <DependentUpon>UC_Afspraak.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Agenda\UC_Agenda.resx">
+    <EmbeddedResource Include="UserControls\Agenda\Afspraken\UC_Agenda.resx">
       <DependentUpon>UC_Agenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Agenda\UC_Day.resx">
+    <EmbeddedResource Include="UserControls\Agenda\Afspraken\UC_Day.resx">
       <DependentUpon>UC_Day.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Agenda\Afspraken\UC_DetailedAfspraak.resx">
       <DependentUpon>UC_DetailedAfspraak.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Agenda\UC_WaitList.resx">
+    <EmbeddedResource Include="UserControls\Agenda\Waitlist\UC_AddWaitlist.resx">
+      <DependentUpon>UC_AddWaitlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Agenda\Waitlist\UC_WaitList.resx">
       <DependentUpon>UC_WaitList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\KadoBonnen\UC_KadoBon.resx">
@@ -368,6 +400,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

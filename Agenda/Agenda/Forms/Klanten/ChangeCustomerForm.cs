@@ -1,4 +1,5 @@
-﻿using Agenda.Classes.Checks;
+﻿using Agenda.Classes;
+using Agenda.Classes.Checks;
 using Agenda.Classes.Objects;
 using Agenda.Classes.Querys;
 using System;
@@ -23,65 +24,81 @@ namespace Agenda.Forms.Klanten
 
         public void LoadInfo(Customer c)
         {
-            customerId = c.Id;
-            string[] adres = c.Adres.Split(',');
-            txtbox_name.Text = c.Naam;
-            datetimepicker.Value = c.gbDatum;
-            txtbox_email.Text = c.Email;
-            txtbox_number.Text = c.TelefoonNummer;
-            txtbox_street.Text = adres[0];
-            txtbox_postcode.Text = adres[1];
-            txtbox_city.Text = adres[2];
-        }
+            customerId = c.id;
 
-        private async void btn_save_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtbox_email.Text) ||
-                string.IsNullOrEmpty(txtbox_name.Text) ||
-                string.IsNullOrEmpty(txtbox_city.Text) ||
-                string.IsNullOrEmpty(txtbox_number.Text) ||
-                string.IsNullOrEmpty(txtbox_postcode.Text) ||
-                string.IsNullOrEmpty(txtbox_street.Text) ||
-                datetimepicker.Value == DateTime.Today
-                )
+            // Personal
+            txtbox_name.Text = c.name;
+            txtbox_salutation.Text = c.salutation;
+            switch (c.gender)
             {
-                DialogResult result = MessageBox.Show("Een of meerdere waardes zijn niet ingevuld! \n\n Weet je zeker dat je door wilt gaan?", "Bevestiging", MessageBoxButtons.YesNo);
-                if (result == DialogResult.No)
-                {
-                    return;
-                }
+                case "m": combox_gender.StartIndex = 1; break;
+                case "v": combox_gender.StartIndex = 2; break;
+                case "a": combox_gender.StartIndex = 3; break;
+                default: combox_gender.StartIndex = 0; break;
             }
 
-            if (CustomerCheck.LegitEmail(txtbox_email.Text) ||
-                CustomerCheck.DutchPhoneNumber(txtbox_number.Text) ||
-                CustomerCheck.ExistingCustomer(txtbox_name.Text, customerId))
-            { MessageBox.Show("Email bevat geen @ of telefoon nummer is meer dan 10 tot 11 karaters lang of er bestaat al een klant met die naam"); return; }
+            // Location
+            txtbox_address.Text = c.address;
+            txtbox_postalCode.Text = c.postalCode;
+            txtbox_city.Text = c.city;
+            txtbox_country.Text = c.country;
 
-            // Format the adress
-            string adress = $"{txtbox_street.Text}, {txtbox_postcode.Text}, {txtbox_city.Text}";
+            // Contact
+            txtbox_phoneNumber.Text = c.phoneNumber;
+            txtbox_mobilePhoneNumber.Text = c.mobilePhoneNumber;
+            txtbox_emailAddress.Text = c.emailAddress;
+        }
 
-            // Make a customer
-            Customer c = new Customer(customerId, txtbox_name.Text, adress, txtbox_number.Text, txtbox_email.Text, datetimepicker.Value);
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            // Check for empty fields
+            var requiredFields = new[] {
+                txtbox_name,
+                txtbox_salutation,
 
-            // Add the customer to the database
-            await CustomerQuery.UpdateCustomer(c);
+                txtbox_address,
+                txtbox_postalCode,
+                txtbox_city,
+                txtbox_country,
+
+                txtbox_phoneNumber,
+                txtbox_mobilePhoneNumber,
+                txtbox_emailAddress
+            };
+            if (InputChecks.emptyFields(requiredFields)) return;
+
+            // Check for valid email & phone number
+            if (!InputChecks.ValidEmail(txtbox_emailAddress.Text)) return;
+            if (!InputChecks.ValidPhoneNumber(txtbox_phoneNumber.Text)) return;
+            if (!InputChecks.ValidPhoneNumber(txtbox_mobilePhoneNumber.Text)) return;
+
+            // Gatter info and create object
+            var data = new
+            {
+                type = "P",
+                name = txtbox_name.Text,
+                salutation = txtbox_salutation,
+                gender = combox_gender.Text,
+                address = txtbox_address.Text,
+                postalCode = txtbox_postalCode.Text,
+                city = txtbox_city.Text,
+                country = txtbox_country,
+                address2 = txtbox_address.Text,
+                postalCode2 = txtbox_postalCode.Text,
+                city2 = txtbox_city.Text,
+                country2 = txtbox_country,
+                phoneNumber = txtbox_phoneNumber.Text,
+                mobilePhoneNumber = txtbox_mobilePhoneNumber.Text,
+                emailAddress = txtbox_emailAddress.Text,
+                emailAddressInvoice = txtbox_emailAddress.Text,
+                emailAddressReminder = txtbox_emailAddress.Text,
+            };
+
+            // Make patch request to eboekhouden
+            ApiRequest.PatchRequest("/relation", data, customerId.ToString());
 
             // Close this form
             this.Close();
-        }
-
-        private async void btn_delete_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Weet je zeker dat je deze klant wilt verwijderen?", "Bevestiging", MessageBoxButtons.YesNo);
-            if(result == DialogResult.Yes)
-            {
-                await CustomerQuery.DeleteCustomer(customerId);
-                this.Close();
-            }
-            else if (result == DialogResult.No)
-            {
-                return;
-            }
         }
     }
 }

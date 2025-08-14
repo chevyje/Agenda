@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Windows.Forms;
+using Agenda.Classes;
 using Agenda.Classes.Objects;
 using Agenda.Forms.Klanten;
 
@@ -22,7 +23,7 @@ namespace Agenda.Forms.Agenda
             InitializeComponent();
             foreach (Customer k in klanten)
             {
-                combox_klanten.Items.Add(k.Naam);
+                combox_klanten.Items.Add(k.name);
             }
         }
 
@@ -40,7 +41,7 @@ namespace Agenda.Forms.Agenda
 
             foreach (Customer k in klanten)
             {
-                if(k.Naam.Trim() == combox_klanten.Text.Trim())
+                if(k.name.Trim() == combox_klanten.Text.Trim())
                 {
                     klantInfo = k;
                 }

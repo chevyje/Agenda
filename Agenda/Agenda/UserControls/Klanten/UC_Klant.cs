@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Agenda.Classes;
 using Agenda.Classes.Objects;
 using Agenda.Forms.Klanten;
 
@@ -21,18 +21,48 @@ namespace Agenda
             InitializeComponent();
         }
 
-        public void loadInfo(Customer k)
+        public void loadInfo(Customer c)
         {
-            if (k == null) {return;}
-            customer = k;
-            lb_Naam.Text = k.Naam;
-            lb_gbDatum.Text = k.gbDatum.ToString("dd-MM-yyyy");
-            lb_Nummer.Text = k.TelefoonNummer;
-            lb_Email.Text = k.Email;
-            lb_Adres.Text = k.Adres;
-            AdjustFontSizeToFit(lb_Naam);
-            AdjustFontSizeToFit(lb_Email);
-            AdjustFontSizeToFit(lb_Adres);
+            if (c == null) return;
+            customer = c;
+
+            txt_name.Text = c.name;
+
+            txt_address.Text = c.address;
+            txt_postalCode.Text = c.postalCode;
+            txt_city.Text = c.city;
+
+            int emptyCount = 0;
+            if (string.IsNullOrEmpty(c.mobilePhoneNumber)) emptyCount++;
+            if (string.IsNullOrEmpty(c.phoneNumber)) emptyCount++;
+            switch (emptyCount)
+            {
+                case 0:
+                    txt_nummer1.Text = c.mobilePhoneNumber;
+                    txt_nummer2.Text = c.phoneNumber;
+                    break;
+                case 1:
+                    if (string.IsNullOrEmpty(c.mobilePhoneNumber))
+                    {
+                        lbl_nummer1.Text = "Vast nummer:";
+                        txt_nummer1.Text = c.phoneNumber;
+                    }
+                    if(string.IsNullOrEmpty(c.phoneNumber))
+                    {
+                        lbl_nummer1.Text = "Mobiel nummer:";
+                        txt_nummer1.Text = c.mobilePhoneNumber;
+                    }
+                    lbl_nummer2.Visible = false;
+                    txt_nummer2.Visible = false;
+                    break;
+                case 2:
+                    lbl_nummer1.Visible = false;
+                    txt_nummer1.Visible = false;
+                    lbl_nummer2.Visible = false;
+                    txt_nummer2.Visible = false;
+                    break;
+            }
+            txt_emailAddress.Text = c.emailAddress;
         }
 
         private void AdjustFontSizeToFit(Label label)

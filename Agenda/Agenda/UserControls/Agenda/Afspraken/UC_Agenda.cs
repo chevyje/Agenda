@@ -14,6 +14,8 @@ using Agenda.Classes.Objects;
 using Agenda.Forms.Agenda;
 using Agenda.UserControls.Agenda;
 using Agenda.Classes.Querys;
+using Agenda.Classes.Checks;
+using Agenda.UserControls.Agenda.Waitlist;
 
 namespace Agenda
 {
@@ -35,50 +37,9 @@ namespace Agenda
         public async void LoadInfo()
         {
             afspraakList = await AppointmentQuery.GetAppointments();
-            waitList = await WaitListQuery.GetWaitList();
             FilterAfspraakPerMonth();
             LoadDays();
             LoadWaitList();
-        }
-
-        public void DetailedAfspraak(Appointment afspraak)
-        {
-            selectedAfspraak = afspraak;
-            afspraakDetails.Visible = true;
-            lb_details_datum.Text = afspraak.Datum.ToString("dd-MM-yyyy");
-            lb_details_tijd.Text = afspraak.Tijd.ToString("HH:mm") + " - " + afspraak.Tijd.AddHours(1).ToString("HH:mm");
-            lb_details_naam.Text = afspraak.Naam;
-            lb_details_behandeling.Text = afspraak.Behandeling;
-            lb_details_beschrijving.Text = afspraak.Beschrijving;
-            AdjustFontSizeToFit(lb_details_naam);
-            AdjustFontSizeToFit(lb_details_beschrijving);
-        }
-
-        private void AdjustFontSizeToFit(Label label)
-        {
-            float fontSize = label.Font.Size;
-
-            using (Graphics g = label.CreateGraphics())
-            {
-                Size labelSize = label.ClientSize;
-                SizeF textSize;
-
-                while (fontSize > 1)
-                {
-                    using (Font font = new Font(label.Font.FontFamily, fontSize))
-                    {
-                        textSize = g.MeasureString(label.Text, font, labelSize.Width);
-
-                        if (textSize.Height <= labelSize.Height)
-                        {
-                            label.Font = font;
-                            break;
-                        }
-
-                        fontSize -= 1;
-                    }
-                }
-            }
         }
 
         private void FilterAfspraakPerMonth()
@@ -209,20 +170,22 @@ namespace Agenda
             }
         }
 
-        private void LoadWaitList()
+        public async void LoadWaitList()
         {
-            Debug.WriteLine("Test");
+            waitList = await WaitListQuery.GetWaitList();
             WachtlijstContainer.Controls.Clear();
             if(waitList != null)
             {
                 foreach (WaitList w in waitList)
                 {
-                    Debug.WriteLine($"Wachtlijst ID = {w.Id}");
                     UC_WaitList waitList = new UC_WaitList();
                     waitList.LoadInfo(w);
                     WachtlijstContainer.Controls.Add(waitList);
                 }
             }
+
+            UC_AddWaitlist add = new UC_AddWaitlist();
+            WachtlijstContainer.Controls.Add(add);
         }
 
         // Buttons 
@@ -238,20 +201,6 @@ namespace Agenda
             datum = datum.AddMonths(-1);
             FilterAfspraakPerMonth();
             LoadDays();
-        }
-
-        private void lb_details_close_Click(object sender, EventArgs e)
-        {
-            afspraakDetails.Visible = false;
-        }
-
-        private async void btn_details_wijzigen_Click(object sender, EventArgs e)
-        {
-            afspraakDetails.Visible = false;
-            ChangeAppointmentForm changeAppointment = new ChangeAppointmentForm();
-            await changeAppointment.FillComboBox();
-            changeAppointment.FillInfo(selectedAfspraak);
-            changeAppointment.ShowDialog();
         }
 
         private void btn_PlusAfspraak_Click(object sender, EventArgs e)

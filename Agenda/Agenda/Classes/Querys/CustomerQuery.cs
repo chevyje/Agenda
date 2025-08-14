@@ -13,7 +13,7 @@ namespace Agenda.Classes.Querys
 {
     internal class CustomerQuery
     {
-        public static string connecionString = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Properties.Settings.Default.dbPath};Jet OLEDB:Database Password={Properties.Settings.Default.Password};Persist Security Info=False;";
+        /* public static string connecionString = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Properties.Settings.Default.dbPath};Jet OLEDB:Database Password={Properties.Settings.Default.Password};Persist Security Info=False;";
 
         public static async Task<List<Customer>> GetCustomers()
         {
@@ -171,6 +171,6 @@ namespace Agenda.Classes.Querys
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
         }
-
+        */
     }
 }

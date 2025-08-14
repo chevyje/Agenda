@@ -1,4 +1,5 @@
-﻿using Agenda.Classes.Checks;
+﻿using Agenda.Classes;
+using Agenda.Classes.Checks;
 using Agenda.Classes.Objects;
 using Agenda.Classes.Querys;
 using Agenda.LocalAppSettings;
@@ -34,7 +35,7 @@ namespace Agenda.Forms.Agenda
 
             foreach (Customer c in HomePageForm.Klanten)
             {
-                combox_Name.Items.Add(c.Naam);
+                combox_Name.Items.Add(c.name);
             }
 
             foreach (string s in appSettings.ChosableTime)

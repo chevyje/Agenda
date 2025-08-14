@@ -17,7 +17,7 @@ namespace Agenda.Classes.Querys
 
         public static async Task<List<WaitList>> GetWaitList()
         {
-            Debug.WriteLine(connecionString);
+            Debug.WriteLine("Getting all things from the wachtlijst");
             List<WaitList> waitinglist = new List<WaitList>();
 
             // SQL query to select data from a table
@@ -33,7 +33,6 @@ namespace Agenda.Classes.Querys
                         {
                             if (reader.HasRows)
                             {
-                                Debug.WriteLine($"Wachtlijst has rows. with id: {Convert.ToInt32(reader[0])}");
                                 while (reader.Read())
                                 {
                                     int Id = Convert.ToInt32(reader[0]);
@@ -46,7 +45,7 @@ namespace Agenda.Classes.Querys
                             }
                             else
                             {
-                                Debug.WriteLine("No rows found in the Wachtlijst table. check if there is a error in the database or in your code =)");
+                                Debug.WriteLine("No rows found in the Wachtlijst table. check if there is a error in the database or in the code =)");
                             }
                         }
                     }
@@ -54,7 +53,7 @@ namespace Agenda.Classes.Querys
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error: " + ex.Message);
+                    Debug.WriteLine("There was an error while trying to get the Wachtlijst: " + ex.Message);
                     await Task.CompletedTask;
                     return null;
                 }
@@ -88,7 +87,7 @@ namespace Agenda.Classes.Querys
                         {
                             w.Id = insertedId;
                             HomePageForm.WachtLijst.Add(w);
-                            HomePageForm.agenda.LoadInfo();
+                            HomePageForm.agenda.LoadWaitList();
                         }
                     }
                 }
@@ -124,7 +123,7 @@ namespace Agenda.Classes.Querys
                 if (index != -1)
                 {
                     HomePageForm.WachtLijst[index] = w;
-                    HomePageForm.agenda.LoadInfo();
+                    HomePageForm.agenda.LoadWaitList();
                 }
             }
             catch (Exception ex)
@@ -150,7 +149,7 @@ namespace Agenda.Classes.Querys
                     }
                 }
 
-                int index = HomePageForm.Klanten.FindIndex(person => person.Id == id);
+                int index = HomePageForm.Klanten.FindIndex(person => person.id == id);
                 if (index != -1)
                 {
                     HomePageForm.Klanten.RemoveAt(index);
